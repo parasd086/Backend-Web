@@ -15,6 +15,20 @@ describe("Utils test suite", () => {
     expect(actual).toBe(expected); //we are expecting our actual value is our expected
   });
 
+  //Example of Parametrized tests-->
+  describe.only("ToUpperCase example", () => {
+    //for each entry in this array, a test will run
+    it.each([
+      { input: "abc", expected: "ABC" },
+      { input: "My-String", expected: "MY-STRING" },
+      { input: "abc", expected: "ABC" },
+    ])("$input toUpperCase should be $expected", ({ input, expected }) => {
+      //arguments of the callback should resembles
+      const acual = toUpperCase(input);
+      expect(acual).toBe(expected);
+    });
+  });
+
   describe("getStringInfo for arg My-String should", () => {
     //Note- 1.Each test should be independent of each another
     test("return right length", () => {
@@ -34,6 +48,7 @@ describe("Utils test suite", () => {
       expect(actual.characters).toEqual([
         "M",
         "y",
+        ,
         "-",
         "S",
         "t",
