@@ -127,14 +127,14 @@ exports.config = {
     "spec",
     // ["allure", { outputDir: "allure-results" }]
     [
-      ("junit",
+      "junit",
       {
         outputDir: "junit-reports",
         outputFileFormat: function (options) {
           // optional
           return `results-${options.cid}.xml`;
         },
-      }),
+      },
     ],
   ],
 
