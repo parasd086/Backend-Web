@@ -38,6 +38,17 @@ const VendorSchema = new Schema(
     // ],
   },
   {
+    /*Restricting what we send back as JSON in our session at the model level itself
+     "toJSON" and "transform(doc, ret)" are part of Mongoose schema options that allow you to customize the output when the document is converted to JSON, such as when sending it in a response. */
+    toJSON: {
+      transform(doc, ret) {
+        delete ret.password;
+        delete ret.salt;
+        delete ret.__v;
+        delete ret.createdAt;
+        delete ret.updatedAt;
+      },
+    },
     timestamps: true,
   }
 );
